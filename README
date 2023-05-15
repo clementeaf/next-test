@@ -1,5 +1,8 @@
 # Aplicación Realizada en NextJS Typescript y TailwindCSS.
 
+Librerías Externas: 
+    Zustand
+
 Login:
     User: clemente
     password: clemente
@@ -7,13 +10,13 @@ Login:
 Palíndromo: Recorrido a la inversa, esta función permite identificar si la primera
 letra de una frase o palabra, palabra en este particular caso, es igual a la última
 
-DotsDraw: En esta función, cada que el usuario relize un click en la pantalla, este,
-generá un registro de esta acción, dejando un rastro en la posición exacta (x, y),
-con un color aleatorio, además, se almacenará en LocalStorage, el primer click generado
-con su respectivo color.
+DotsDraw: Registro y persistencia de ubicacipon en evento "click" con  colores aleatorios para el mismo registro.
 
-Esta aplicación posee a su vez integración de la librería jest, para testeo de la función
-Políndromo.
 
-Se instaló de manera adicional la librería zustand, la cual permite acutar de store
-evitando el exceso de código, permitiendo mayor dinamismo y rapidez a la hora de ejecución y lectura de lo desarrollado.
+1, hacer y deshacer.
+2, Login logout, firebase.
+3, Panel diseño, sombreado, contenedor.
+4, Readme, instalación y uso, limpiarlo.
+5, Lint.
+
+Palindro: Completarlo.

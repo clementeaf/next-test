@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { JSXElementConstructor, PromiseLikeOfReactNode, ReactElement, ReactFragment, ReactPortal, useState } from "react";
+import { useState } from "react";
 
 export function isPalindromo(word: string): boolean {
-  const formattedWord: string = word.replaceAll(" ", "").toLowerCase()
+  const singleWord = word.split(" ")[0];
+  const formattedWord: string = singleWord.toLowerCase()
   .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
   .replace(/[\W]/g, '');
 
