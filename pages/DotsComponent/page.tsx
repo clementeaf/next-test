@@ -46,6 +46,7 @@ const DotsComponent: NextPage = () => {
         />
         )
         :
+        dot &&
         (
             <div key={dot.x + dot.y}
             className="rounded-full" 

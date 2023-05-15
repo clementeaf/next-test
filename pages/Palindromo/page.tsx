@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState } from "react";
+import { JSXElementConstructor, PromiseLikeOfReactNode, ReactElement, ReactFragment, ReactPortal, useState } from "react";
 
 export function isPalindromo(word: string): boolean {
   const formattedWord: string = word.replaceAll(" ", "").toLowerCase()
@@ -28,13 +28,32 @@ export default function Palindromo() {
     const handleCheck = (e: { preventDefault: () => void; }) => {
       e.preventDefault();
       setCheck(true);
-      localStorage.setItem('palindromo', JSON.stringify(word.word));
+      let result: { tested:  string, result: boolean} = {
+        tested: word.word,
+        result: isPalindromo(word.word),
+      }
+      const value = typeof window !== 'undefined' ? localStorage.getItem('palindromo') : null;
+      const listStore = value  && JSON.parse(value);
+      if(listStore){
+        listStore.push(result);
+        localStorage.setItem('palindromo', JSON.stringify(listStore));
+      } else {
+        localStorage.setItem('palindromo', JSON.stringify([result]));
+      }
     };
 
     const handleClean = (e: { preventDefault: () => void; }) => {
       e.preventDefault();
       setWord({word: ""})
     }
+
+    const value = typeof window !== 'undefined' ? localStorage.getItem('palindromo') : null;
+    const listStore = value  && JSON.parse(value);
+
+    const DICT: { true:  string, false: string} = {
+      true: "Verdadero",
+      false: "Falso",
+    };
 
   return (
     <div className="flex flex-col">
@@ -58,6 +77,18 @@ export default function Palindromo() {
         >
           Reset
         </button>
+
+            <select>
+            {listStore && listStore.map((test: any, idx: number) => {
+              const { tested, result } = test;
+              return (
+              <option value={tested} key={idx}>
+                Testeado: {tested}{" "},
+                Resultado: {result ? DICT["true"] : DICT["false"]}
+              </option>
+              )
+            })}
+            </select>
         {check && palindromo}
       </form>
     </div>
