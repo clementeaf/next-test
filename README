@@ -1,22 +1,11 @@
 # Aplicación Realizada en NextJS Typescript y TailwindCSS.
 
 Librerías Externas: 
-    Zustand
-
-Login:
-    User: clemente
-    password: clemente
+    Zustand: Control de componte y usuario.
+    Firebase: Autenticación e ingreso de usuario por medio de gmail
 
 Palíndromo: Recorrido a la inversa, esta función permite identificar si la primera
 letra de una frase o palabra, palabra en este particular caso, es igual a la última
 
 DotsDraw: Registro y persistencia de ubicacipon en evento "click" con  colores aleatorios para el mismo registro.
 
-
-1, hacer y deshacer.
-2, Login logout, firebase.
-3, Panel diseño, sombreado, contenedor.
-4, Readme, instalación y uso, limpiarlo.
-5, Lint.
-
-Palindro: Completarlo.

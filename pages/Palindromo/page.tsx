@@ -62,6 +62,8 @@ export default function Palindromo() {
         <label>Write a word to check if it is a palíndromo</label>
         <input 
                 id="password"
+                type="text"
+                maxLength={30}
                 className='border-[1px] border-gray-400 rounded-full p-2'
                 onChange={(e) => setWord({word: e.target.value,})}
                 value={word.word}

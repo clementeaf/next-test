@@ -17,6 +17,7 @@ const useClickTracker = () => {
       setClicks(prevClicks => [...prevClicks, clickData]);
       if (clicks.length > 0) {
         localStorage.setItem('firstIndex', JSON.stringify(clicks[0]));
+        localStorage.setItem('dotsArray', JSON.stringify(clicks));
       }
     };
 
