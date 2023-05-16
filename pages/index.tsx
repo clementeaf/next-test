@@ -1,12 +1,38 @@
-import Authentication from './authentication/page'
 import Main from './main/page';
-import usePageStore from '@/store/pageStore';
+import { initFirebase } from '@/firebase';
+import useUserStore from '@/store/userStore';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
-export default function Home() {
-  const { page } = usePageStore(({ page }) => ({page}));
+const Home = () => {
+  initFirebase();
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+  const { user, setUser  } = useUserStore(
+    ({ user, setUser }) => 
+    ({user, setUser }));
+
+  const signIn = async () => {
+    const result = await signInWithPopup(auth, provider);
+    if (result.user){
+      setUser(result.user.emailVerified)
+    }
+  };
+
   return (
-    <div className='flex min-h-screen flex-col items-center justify-center p-24 gap-6"'>
-      {page ? <Authentication /> : <Main />}
+    <div className="flex h-screen w-screen flex-col items-center justify-center text-center gap-4">
+      {user ? (
+        <Main />
+      ):(
+      <>
+        <p>Please signIn to continue</p><button onClick={signIn}>
+          <div className="bg-blue-600 text-white rounded-md p-2 w-48">
+            Sign In
+          </div>
+        </button>
+      </>
+       )}
     </div>
-  )
-}
+  );
+};
+
+export default Home;
